@@ -16,7 +16,8 @@ export class EditcmsComponent implements OnInit {
   msgs: Message[] = [];
   constructor(private fb: FormBuilder,
     private apiService: ApiserviceService,
-    private confirmationService: ConfirmationService) {
+    private confirmationService: ConfirmationService,
+    private router: Router) {
 
     this.editCmsForm = fb.group({
       'page_title': ['', [
@@ -55,6 +56,7 @@ export class EditcmsComponent implements OnInit {
             res => {
               if (res.code === 200) {
                 this.msgs = [{ severity: 'success', summary: 'Confirmed', detail: res.message }];
+                this.router.navigate(['/admin']);
               } else if (res.code === 201) {
                 this.msgs = [{ severity: 'error', summary: 'Error', detail: res.message }];
               } else {

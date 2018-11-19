@@ -45,6 +45,7 @@ export class AddcmsComponent implements OnInit {
             res => {
               if (res.code === 200) {
                 this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'Data Added sucessfully' }];
+                this.router.navigate(['/admin']);
               } else if (res.code === 208) {
                 this.msgs = [{ severity: 'error', summary: 'Error', detail: res.message }];
               }
