@@ -13,7 +13,6 @@ export class UsersidebarComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getAllCmsPages().subscribe(res => {
-      console.log(res.data);
       this.cmsPages = res.data;
       this.apiService.sendViewCmsPageData(res.data[0]);
     });

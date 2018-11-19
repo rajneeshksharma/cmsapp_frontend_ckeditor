@@ -20,7 +20,7 @@ export class AdmincmsComponent implements OnInit {
       { field: 'page_title', header: 'Page Title' },
       { field: 'action', header: 'Action' }
     ];
-    this.apiService.getAllCmsPages().subscribe(res => { this.cmspages = res.data; console.log(res); }, err => { console.error(err); });
+    this.apiService.getAllCmsPages().subscribe(res => { this.cmspages = res.data; }, err => { console.error(err); });
   }
   onClickAddNew() {
     this.router.navigate(['/admin/addcms']);
