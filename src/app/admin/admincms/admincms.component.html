@@ -1,0 +1,38 @@
+<button class="btn btn-primary" (click)="onClickAddNew()">Add new csm page</button>
+<p-messages [value]="msgs"></p-messages>
+<hr>
+<p-table #tt [paginator]="true" [rows]="5" [totalRecords]="cmspages?.length" 
+[value]='cmspages' [columns]='cols'>
+<ng-template pTemplate="header" let-columns>
+  <tr>
+    <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+      {{col.header}}
+      <p-sortIcon [field]="col.field"></p-sortIcon>
+    </th>
+  </tr>
+</ng-template>
+<ng-template pTemplate="body" let-cmspage>
+  <tr>
+    <td>{{cmspages.indexOf(cmspage)+1}}</td>
+    <td>{{cmspage.page_title? cmspage.page_title:null}}</td>
+    <td>
+      <div class="ui-g">
+        <div class="ui-g-3">
+          <p-button pTooltip="edit" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-pencil" styleClass="ui-button-success" (click)="onCLickEditButton(cmspage)"></p-button>
+        </div>
+        <div class="ui-g-3">
+          <p-button pTooltip="view" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-eye" styleClass="ui-button-info" 
+          (click)="onCLickViewButton(cmspage)"
+          ></p-button>
+        </div>
+        <div class="ui-g-3">
+          <p-button pTooltip="delete" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-minus" styleClass="ui-button-danger"  
+          (click)="onCLickOfDeleteButton(cmspage)"
+          ></p-button>
+        </div>
+      </div>
+    </td>
+  </tr>
+</ng-template>
+</p-table>
+<p-confirmDialog></p-confirmDialog>
